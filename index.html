@@ -35,7 +35,7 @@
         }
         .search-container {
             width: 580px;
-            margin-bottom: 20px;
+            margin-bottom: 2px;
         }
         .search-box {
             width: 100%;
@@ -45,7 +45,7 @@
             background-color: #DC052D;
             border-radius: 24px;
             opacity: 0.7;
-            
+
         }
         .buttons {
             display: flex;
@@ -74,7 +74,7 @@
             top: -250px;
             left: 50%;
             transform: translateX(-50%);
-            transition: top 0.3s ease-in-out;
+            transition: top 0.3s ease-out;
             z-index: 1000;
         }
         .tab {
@@ -88,13 +88,30 @@
             color: #000000;
         }
         .tab-content {
-            background-color: #9C0000;
+            background-color: #DC052D;
             padding: 20px;
             height: 200px;
             border: 3px solid #DC052D;
             color: #000000;
         }
         .sliding-tab.open {
+            top: 0;
+        }
+
+        /* New Sliding Tab Styles */
+        .sliding-tab-right {
+            width: 300px;
+            position: fixed;
+            top: -800px;
+            right: 20px;
+            transition: top 0.3s ease-out;
+            z-index: 1000;
+            opacity: 0.7;
+        }
+        .sliding-tab-right .tab-content {
+            height: 750px;
+        }
+        .sliding-tab-right.open {
             top: 0;
         }
     </style>
@@ -109,7 +126,30 @@
         <div class="tab-content">
             <iframe src="https://open.spotify.com/embed/track/07oO1U722crtVcavi6frX6" width="550" height="240" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
-        <div class="tab">\/ \/ \/ \/</div>
+        <div class="tab">............................................</div>
+    </div>
+
+    <div class="sliding-tab-right">
+        <div class="tab-content">
+            <h3>Apps And Links</h3>
+            <img src="CPM.png" onclick="window.open('https://sso.cpm.org');" </img>
+
+            <img src="SmartPass2.png" onclick="window.open('https://app.smartpass.app/main/passes');" </img>
+
+            <img src="Brightspace.png" onclick="window.open('https://traversecity.brightspace.com/d2l/home');" </img>
+
+            <img src="GMail2020.png" onclick="window.open('https://mail.google.com/mail/u/0/?pli=1#inbox');" </img>
+
+            <img src="Google-Classroom.png" onclick="window.open('https://classroom.google.com/u/2/?emr=0');" </img>
+
+            <img src="powerschool.png" onclick="window.open('https://tcaps.powerschool.com/public/home.html');" </img>
+        
+
+
+
+            
+        </div>
+        <div class="tab">............................................</div>
     </div>
 
     <div class="content">
@@ -118,7 +158,7 @@
         </div>
         <form id="search-form" action="https://www.google.com/search" method="get">
             <div class="search-container">
-                <input type="text" name="q" class="search-box" placeholder="Search Google or type a URL">
+                <input type="text" name="q" class="search-box" placeholder="Search the web">
             </div>
             <div class="buttons">
                 <button type="submit" class="button">Google Search</button>
@@ -142,12 +182,13 @@
             }
         });
 
-        // Sliding Tab Script
-        const slidingTab = document.querySelector('.sliding-tab');
-        const tab = document.querySelector('.tab');
-
-        tab.addEventListener('click', () => {
-            slidingTab.classList.toggle('open');
+        // Sliding Tab Script for both tabs
+        const slidingTabs = document.querySelectorAll('.sliding-tab, .sliding-tab-right');
+        slidingTabs.forEach(slidingTab => {
+            const tab = slidingTab.querySelector('.tab');
+            tab.addEventListener('click', () => {
+                slidingTab.classList.toggle('open');
+            });
         });
     </script>
 </body>
