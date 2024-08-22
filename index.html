@@ -11,6 +11,67 @@
             overflow: hidden;
             font-family: Arial, sans-serif;
         }
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 60px;
+          height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        /* The slider */
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 26px;
+          width: 26px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+
+        input:checked + .slider {
+          background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+          box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+          border-radius: 34px;
+        }
+
+        .slider.round:before {
+          border-radius: 50%;
+        }
         #bg-video {
             position: fixed;
             right: 0;
@@ -114,6 +175,21 @@
         .sliding-tab-right.open {
             top: 0;
         }
+        .sliding-tab-left {
+            width: 300px;
+            position: fixed;
+            top: -800px;
+            left: 20px;
+            transition: top 0.3s ease-out;
+            z-index: 1000;
+            opacity: 0.7;
+        }
+        .sliding-tab-left .tab-content {
+            height: 750px;
+        }
+        .sliding-tab-left.open {
+            top: 0;
+        }
     </style>
 </head>
 <body>
@@ -124,7 +200,7 @@
 
     <div class="sliding-tab">
         <div class="tab-content">
-            <iframe src="https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk" width="550" height="240" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe src="https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk" width="550" height="240" frameborder="0" id="music" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
         <div class="tab">............................................</div>
     </div>
@@ -147,15 +223,25 @@
             <img src="youtube.png" onclick="window.open('youtube.com');" </img>
 
              <h3>Favorite Applications</h3>
-        
-
-
-
-            
+    
         </div>
         <div class="tab">............................................</div>
     </div>
 
+    <div class="sliding-tab-left">
+        <div class="tab-content">
+            <h3>Settings</h3>
+            <h4>Youtube Music Mode</h4>
+            <label class="switch">
+                <input id="swit"  type="checkbox" onchange="//update()" >
+                <span class="slider round"></span>
+              </label>
+        
+
+        </div>
+        <div class="tab">............................................</div>
+    </div>
+   
     <div class="content">
         <div class="logo">
             <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google">
@@ -167,6 +253,7 @@
             <div class="buttons">
                 <button type="submit" class="button">Google Search</button>
                 <button type="button" id="lucky-button" class="button">I'm Feeling Lucky</button>
+               
             </div>
         </form>
     </div>
@@ -215,13 +302,23 @@
         });
 
         // Sliding Tab Script for both tabs
-        const slidingTabs = document.querySelectorAll('.sliding-tab, .sliding-tab-right');
+        const slidingTabs = document.querySelectorAll('.sliding-tab, .sliding-tab-right, .sliding-tab-left');
         slidingTabs.forEach(slidingTab => {
             const tab = slidingTab.querySelector('.tab');
             tab.addEventListener('click', () => {
                 slidingTab.classList.toggle('open');
             });
         });
+
+        const checkbox = document.querySelector('input[type="checkbox"]');
+        checkbox.addEventListener('change', function() {
+          if (this.checked) {
+            document.getElementById("music").src = " https://www.youtube.com/embed/videoseries?list=PLMr7aAMAt4PgUxsfItBMPNiRQVTO-r9-m&index=3";
+          } else {
+            document.getElementById("music").src = "https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk";
+          }
+        });
+        
     </script>
 </body>
 </html>
