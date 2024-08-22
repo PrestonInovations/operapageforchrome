@@ -124,7 +124,7 @@
 
     <div class="sliding-tab">
         <div class="tab-content">
-            <iframe src="https://open.spotify.com/embed/track/07oO1U722crtVcavi6frX6" width="550" height="240" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe src="https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk" width="550" height="240" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
         <div class="tab">............................................</div>
     </div>
@@ -143,6 +143,10 @@
             <img src="Google-Classroom.png" onclick="window.open('https://classroom.google.com/u/2/?emr=0');" </img>
 
             <img src="powerschool.png" onclick="window.open('https://tcaps.powerschool.com/public/home.html');" </img>
+
+            <img src="youtube.png" onclick="window.open('youtube.com');" </img>
+
+             <h3>Favorite Applications</h3>
         
 
 
@@ -168,6 +172,34 @@
     </div>
 
     <script>
+        var audio1 = new Audio('keyboard1.wav');
+        var audio2 = new Audio('keyboard2.wav');
+        var audio3 = new Audio('keyboard3.wav');
+        var audio4 = new Audio('keyboard4.wav');
+        audio1.volume = 1;
+        audio2.volume = 1;
+        audio3.volume = 1;
+        audio4.volume = 1;
+        
+        
+
+        document.addEventListener("keypress", logKey);
+        
+        function logKey() {
+            var num = Math.floor(Math.random() * 4);
+            if(num=0){
+                audio1.play();
+            }
+            if(num=1){
+                audio2.play();
+            }
+            if(num=2){
+                audio3.play();
+            }
+            if(num=3){
+                audio4.play();
+            }
+        }
         document.getElementById('search-form').addEventListener('submit', function(e) {
             var query = document.querySelector('input[name="q"]').value;
             if (!query.trim()) {
