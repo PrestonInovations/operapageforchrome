@@ -211,3 +211,17 @@ function createNewScript(code) {
   script.textContent = code;
   document.body.appendChild(script);
 }
+
+const panel = document.getElementById('panel');
+let isPanelOpen = false;
+
+document.addEventListener('keydown', function(event) {
+    if (event.key.toLowerCase() === 'n') {
+        isPanelOpen = !isPanelOpen;
+        if (isPanelOpen) {
+            panel.classList.add('open');
+        } else {
+            panel.classList.remove('open');
+        }
+    }
+});
