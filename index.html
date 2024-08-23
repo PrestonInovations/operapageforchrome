@@ -175,6 +175,10 @@
             top: 0;
         }
 
+        .sliding-tab2.open {
+            top: 0;
+        }
+
         /* New Sliding Tab Styles */
         .sliding-tab-right {
             width: 300px;
@@ -191,6 +195,24 @@
         }
 
         .sliding-tab-right.open {
+            top: 0;
+        }
+
+        .sliding-tab-center {
+            width: 1000px;
+            position: fixed;
+            top: -300px;
+            right: 21%;
+            transition: top 0.3s ease-out;
+            z-index: 1000;
+            opacity: 0.7;
+        }
+
+        .sliding-tab-center .tab-content {
+            height: -300px;
+        }
+
+        .sliding-tab-center.open {
             top: 0;
         }
 
@@ -328,6 +350,7 @@
     <div class="calendar"> <div class="month" id="currentMonth"></div> <div class="weekdays"> <div>S</div> <div>M</div> <div>T</div> <div>W</div> <div>T</div> <div>F</div> <div>S</div> </div> <div class="days" id="calendarDays"></div> </div>
 
     <iframe src="https://docs.google.com/document/d/16buIYYqp8bJSfjOE2eR43g_smJmbedKonfYqlluCHZQ/edit?embedded=true" width="300px" class="doc" id="assignments" height="730px" frameborder="0"></iframe>
+    
     <div class="sliding-tab">
         <div class="tab-content">
             <iframe src="https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk" width="550" height="240"
@@ -335,6 +358,28 @@
         </div>
         <div class="tab">............................................</div>
     </div>
+
+    <div id="centertab"class="sliding-tab-center">
+        <div id="centercontent" class="tab-content">
+            <h2>Developer Menu</h2>
+            <h4>element creator</h4>
+            <input type="text" id="text2" value="element type">
+            <input type="text" id="text3" value="element id">
+             <button type="submit" onclick="createE()" class="button">create element</button>
+            <h4>element atribute editor</h4>
+            <input type="text" id="text4" value="element id">
+            <input type="text" id="text5" value="element attribute">
+            <input type="text" id="text6" value="new attribute value">
+             <button type="submit" onclick="EditE()" class="button">apply change</button>
+            
+        </div>
+        <div id="centretab" class="tab">............................................</div>
+    </div>
+
+
+
+
+    
     <div id="left" class="sliding-tab-right">
         <div class="tab-content">
             <h3>Apps And Links</h3>
@@ -368,15 +413,7 @@
             <input type="range" min="0" max="10" value="10" oninput="handleSliderChange(this.value)">
             <h4>dragable window url</h4>
             <input type="text" id="textin" value="https://drive.google.com/embeddedfolderview?id=0B9sEQc9fWSoOfmswcExOTGN5dW1pVFh3NmdJQV91MGsxTlRVRkZ4Qk9FcjJ5djg4SkdPeDQ" oninput="changeurl(this.value)">
-            <h4>element creator</h4>
-            <input type="text" id="text2" value="element type">
-            <input type="text" id="text3" value="element id">
-             <button type="submit" onclick="createE()" class="button">create element</button>
-            <h4>element atribute editor</h4>
-            <input type="text" id="text4" value="element id">
-            <input type="text" id="text5" value="element attribute">
-            <input type="text" id="text6" value="new attribute value">
-             <button type="submit" onclick="EditE()" class="button">apply change</button>
+            
         </div>
         <div id="lefttab" class="tab">............................................</div>
     </div>

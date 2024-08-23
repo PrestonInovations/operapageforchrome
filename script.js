@@ -1,3 +1,10 @@
+const element8 = document.querySelector('.sliding-tab-center .tab-content');
+element8.style.backgroundColor = "#a6a4a4";
+element8.style.border = "3px solid #a6a4a4";
+document.getElementById("centretab").style.backgroundColor = "#a6a4a4";
+document.getElementById("centretab").style.border = "3px solid #a6a4a4";
+
+
 var audio1 = new Audio('keyboard1.wav');
 var audio2 = new Audio('keyboard2.wav');
 var audio3 = new Audio('keyboard3.wav');
@@ -35,12 +42,20 @@ document.getElementById('lucky-button').addEventListener('click', function () {
     }
 });
 // Sliding Tab Script for both tabs
-const slidingTabs = document.querySelectorAll('.sliding-tab, .sliding-tab-right, .sliding-tab-left');
+const slidingTabs = document.querySelectorAll('.sliding-tab, .sliding-tab-right, .sliding-tab-left,.sliding-tab-center,.sliding-tab-center');
 slidingTabs.forEach(slidingTab => {
     const tab = slidingTab.querySelector('.tab');
     tab.addEventListener('click', () => {
         slidingTab.classList.toggle('open');
     });
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        let centertab = document.getElementById('centertab');
+        const tab2 = centertab.querySelector('.tab');
+        centertab.classList.toggle('open');
+    }
 });
 const checkbox = document.querySelector('input[name="switch1"]');
 checkbox.addEventListener('change', function () {
