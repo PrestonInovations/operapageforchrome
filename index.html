@@ -320,7 +320,9 @@
         Your browser does not support the video tag.
     </video>
     <div class="calendar"> <div class="month" id="currentMonth"></div> <div class="weekdays"> <div>S</div> <div>M</div> <div>T</div> <div>W</div> <div>T</div> <div>F</div> <div>S</div> </div> <div class="days" id="calendarDays"></div> </div>
-    <iframe src="https://docs.google.com/document/d/16buIYYqp8bJSfjOE2eR43g_smJmbedKonfYqlluCHZQ/edit?usp=sharing" class="doc" id="assignments" width="300px" height="730px" frameborder="0"></iframe>
+
+    <iframe src="https://docs.google.com/document/d/16buIYYqp8bJSfjOE2eR43g_smJmbedKonfYqlluCHZQ/edit?embedded=true" width="300px" class="doc" id="assignments" height="730px" frameborder="0"></iframe>
+    
 
     <div class="sliding-tab">
         <div class="tab-content">
@@ -373,6 +375,8 @@
 
             <h4>assignemnts doc opacity</h4>
             <input type="range" min="0" max="10" value="10" oninput="handleSliderChange(this.value)">
+            <h4>dragable window url</h4>
+            <input type="text" id="textin" value="https://drive.google.com/embeddedfolderview?id=0B9sEQc9fWSoOfmswcExOTGN5dW1pVFh3NmdJQV91MGsxTlRVRkZ4Qk9FcjJ5djg4SkdPeDQ" oninput="changeurl(this.value)">
 
 
 
@@ -401,7 +405,7 @@
 
             <iframe
                 src="https://drive.google.com/embeddedfolderview?id=0B9sEQc9fWSoOfmswcExOTGN5dW1pVFh3NmdJQV91MGsxTlRVRkZ4Qk9FcjJ5djg4SkdPeDQ"
-                style="width:100%; height:300px; border:0;"></iframe>
+                id="draggable" style="width:100%; height:300px; border:0;"></iframe>
 
             <!-- Add more content as needed -->
         </div>
@@ -635,6 +639,11 @@
         function handleSliderChange(value) {
             document.getElementById('assignments').style.opacity = (value/10);
           // Perform actions based on the new value
+        }
+
+
+        function changeurl(value) {
+            document.getElementById('draggable').src = value;
         }
 
     </script>
