@@ -247,6 +247,70 @@
             overflow-y: auto;
             height: calc(100% - 50px);
         }
+        /* calander styles */
+        .calendar { 
+            font-family: Arial, sans-serif;
+            left:85%;
+            top:50px;
+            max-width: 200px; /* Reduced from 300px */ margin: 0 auto;
+            position: fixed;
+            color: #cf4c65;
+                  }
+
+        .month {
+            text-align: center;
+            font-size: 14px; /* Reduced from 18px */
+            font-weight: bold;
+            margin-bottom: 3px; /* Reduced from 5px */
+            margin: 0 auto;
+        }
+
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: bold;
+            background-color: #f0f0f0;
+            font-size: 10px; /* Reduced from 12px */
+            opacity: 0;
+        }
+
+        .days {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 3px; /* Reduced from 5px */
+        }
+
+        .days div {
+            width: calc(14.28% - 2px); /* Reduced from calc(14.28% - 4px) */
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1px 0; /* Reduced from 2px 0 */
+            border: 1px solid #9C0000;
+            background-color: #DC052D;
+            color: #cf4c65;
+            opacity: 0.7;
+            font-size: 12px; /* Reduced from 18px */
+        }
+
+        .today {
+            background-color: #007bff !important;
+            font-weight: bold;
+        }
+
+        .empty {
+            visibility: hidden;
+        }
+        .doc {
+            position: fixed;
+            right:82%; 
+            top:55px;
+        }
+
+        
     </style>
 </head>
 
@@ -255,6 +319,8 @@
         <source src="car1.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+    <div class="calendar"> <div class="month" id="currentMonth"></div> <div class="weekdays"> <div>S</div> <div>M</div> <div>T</div> <div>W</div> <div>T</div> <div>F</div> <div>S</div> </div> <div class="days" id="calendarDays"></div> </div>
+    <iframe src="https://docs.google.com/document/d/16buIYYqp8bJSfjOE2eR43g_smJmbedKonfYqlluCHZQ/edit?usp=sharing" class="doc" id="assignments" width="300px" height="730px" frameborder="0"></iframe>
 
     <div class="sliding-tab">
         <div class="tab-content">
@@ -305,6 +371,9 @@
 
             <button type="submit" onclick="themeblack()" class="button">white</button>
 
+            <h4>assignemnts doc opacity</h4>
+            <input type="range" min="0" max="10" value="10" oninput="handleSliderChange(this.value)">
+
 
 
         </div>
@@ -320,8 +389,10 @@
             <div class="buttons">
                 <button type="submit" id="sear" class="button">Google Search</button>
                 <button type="button" id="lucky-button" class="button">I'm Feeling Lucky</button>
+                
 
             </div>
+            
         </form>
     </div>
     <div id="draggable-div">
@@ -435,7 +506,10 @@
             document.getElementById("righttab").style.border = "3px solid #DC052D";
             document.getElementById("lefttab").style.backgroundColor = "#DC052D";
             document.getElementById("lefttab").style.border = "3px solid #DC052D";
-
+            
+           
+            
+            
 
         }
 
@@ -466,9 +540,19 @@
             document.getElementById("righttab").style.border = "3px solid #a6a4a4";
             document.getElementById("lefttab").style.backgroundColor = "#a6a4a4";
             document.getElementById("lefttab").style.border = "3px solid #a6a4a4";
+            
+            
+            
+            
+            
 
 
         }
+
+
+
+
+        
         const draggableDiv = document.getElementById('draggable-div');
         const dragHandle = document.getElementById('drag-handle');
         let isDragging = false;
@@ -505,7 +589,53 @@
         function stopDragging() {
             isDragging = false;
         }
+        //calander fnctions
+        function generateCalendar() {
+            const now = new Date();
+            const currentMonth = now.getMonth();
+            const currentYear = now.getFullYear();
+            const currentDay = now.getDate();
 
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                "July", "August", "September", "October", "November", "December"];
+
+            document.getElementById('currentMonth').textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+
+            let calendarHTML = '';
+
+            for (let i = 0; i < firstDayOfMonth; i++) {
+                calendarHTML += '<div class="empty"></div>';
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                if (day === currentDay) {
+                    calendarHTML += `<div class="today">${day}</div>`;
+                } else {
+                    calendarHTML += `<div>${day}</div>`;
+                }
+            }
+
+            const totalDays = firstDayOfMonth + daysInMonth;
+            const remainingSlots = 7 - (totalDays % 7);
+            if (remainingSlots < 7) {
+                for (let i = 0; i < remainingSlots; i++) {
+                    calendarHTML += '<div class="empty"></div>';
+                }
+            }
+
+            document.getElementById('calendarDays').innerHTML = calendarHTML;
+        }
+
+        generateCalendar();
+
+
+        function handleSliderChange(value) {
+            document.getElementById('assignments').style.opacity = (value/10);
+          // Perform actions based on the new value
+        }
 
     </script>
 </body>
