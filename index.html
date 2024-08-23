@@ -192,6 +192,40 @@
         .sliding-tab-left.open {
             top: 0px;
         }
+        #draggable-div {
+            position: fixed;
+            bottom: -300px;
+            left: 0;
+            width: 100%;
+            height: 350px;
+            background-color: #f0f0f0;
+            transition: bottom 0.3s ease-out;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #drag-handle {
+            width: 100%;
+            height: 50px;
+            background-color: #ddd;
+            cursor: grab;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #drag-handle::before {
+            content: '';
+            width: 50px;
+            height: 5px;
+            background-color: #999;
+            border-radius: 5px;
+        }
+
+        #content {
+            padding: 20px;
+            overflow-y: auto;
+            height: calc(100% - 50px);
+        }
     </style>
 </head>
 <body>
@@ -266,6 +300,15 @@
                
             </div>
         </form>
+    </div>
+    <div id="draggable-div">
+        <div id="drag-handle"></div>
+        <div id="content">
+
+            <iframe src="https://drive.google.com/embeddedfolderview?id=0B9sEQc9fWSoOfmswcExOTGN5dW1pVFh3NmdJQV91MGsxTlRVRkZ4Qk9FcjJ5djg4SkdPeDQ" style="width:100%; height:300px; border:0;"></iframe>
+
+            <!-- Add more content as needed -->
+        </div>
     </div>
 
     <script>
@@ -401,7 +444,42 @@ function themeblack() {
     
     
 }
-        
+        const draggableDiv = document.getElementById('draggable-div');
+        const dragHandle = document.getElementById('drag-handle');
+        let isDragging = false;
+        let startY;
+        let startBottom;
+
+        dragHandle.addEventListener('mousedown', startDragging);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', stopDragging);
+
+        dragHandle.addEventListener('touchstart', startDragging);
+        document.addEventListener('touchmove', drag);
+        document.addEventListener('touchend', stopDragging);
+
+        function startDragging(e) {
+            isDragging = true;
+            startY = e.clientY || e.touches[0].clientY;
+            startBottom = parseInt(window.getComputedStyle(draggableDiv).bottom);
+            e.preventDefault();
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            const currentY = e.clientY || e.touches[0].clientY;
+            const deltaY = startY - currentY;
+            let newBottom = startBottom + deltaY;
+
+            // Limit the draggable area
+            newBottom = Math.max(-300, Math.min(newBottom, 0));
+
+            draggableDiv.style.bottom = `${newBottom}px`;
+        }
+
+        function stopDragging() {
+            isDragging = false;
+        }
         
         
     </script>
