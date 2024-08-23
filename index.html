@@ -96,12 +96,14 @@
         }
         .search-container {
             width: 580px;
-            margin-bottom: 2px;
+            margin-bottom: 20px;
+            
         }
         .search-box {
             width: 100%;
             padding: 10px;
             font-size: 16px;
+            top: 10px;
             border: 4px solid #9C0000;
             background-color: #DC052D;
             border-radius: 24px;
@@ -188,7 +190,7 @@
             height: 750px;
         }
         .sliding-tab-left.open {
-            top: 0;
+            top: 0px;
         }
     </style>
 </head>
@@ -205,7 +207,7 @@
         <div class="tab">............................................</div>
     </div>
 
-    <div class="sliding-tab-right">
+    <div id="left" class="sliding-tab-right">
         <div class="tab-content">
             <h3>Apps And Links</h3>
             <img src="CPM.png" onclick="window.open('https://sso.cpm.org');" </img>
@@ -225,7 +227,7 @@
              <h3>Favorite Applications</h3>
     
         </div>
-        <div class="tab">............................................</div>
+        <div id="righttab" class="tab">............................................</div>
     </div>
 
     <div class="sliding-tab-left">
@@ -233,25 +235,33 @@
             <h3>Settings</h3>
             <h4>Youtube Music Mode</h4>
             <label class="switch">
-                <input id="swit"  type="checkbox" onchange="//update()" >
+                <input name="switch1" id="swit"  type="checkbox" onchange="//update()" >
                 <span class="slider round"></span>
               </label>
+            <h4>Keyboard Sounds</h4>
+            <label class="switch">
+                <input name="switch2" id="swit"  type="checkbox" onchange="//update()" >
+                <span class="slider round"></span>
+              </label>
+            <h4>presets</h4>
+            <button type="submit" onclick="themered()" class="button">Red</button>
+
+            <button type="submit" onclick="themeblack()" class="button">white</button>
+            
         
 
         </div>
-        <div class="tab">............................................</div>
+        <div id="lefttab" class="tab">............................................</div>
     </div>
    
     <div class="content">
-        <div class="logo">
-            <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google">
-        </div>
+        
         <form id="search-form" action="https://www.google.com/search" method="get">
             <div class="search-container">
                 <input type="text" name="q" class="search-box" placeholder="Search the web">
             </div>
             <div class="buttons">
-                <button type="submit" class="button">Google Search</button>
+                <button type="submit" id="sear" class="button">Google Search</button>
                 <button type="button" id="lucky-button" class="button">I'm Feeling Lucky</button>
                
             </div>
@@ -271,6 +281,8 @@
         
 
         document.addEventListener("keypress", logKey);
+
+        
         
         function logKey() {
             var num = Math.floor(Math.random() * 4);
@@ -310,7 +322,7 @@
             });
         });
 
-        const checkbox = document.querySelector('input[type="checkbox"]');
+        const checkbox = document.querySelector('input[name="switch1"]');
         checkbox.addEventListener('change', function() {
           if (this.checked) {
             document.getElementById("music").src = " https://www.youtube.com/embed/videoseries?list=PLMr7aAMAt4PgUxsfItBMPNiRQVTO-r9-m&index=3";
@@ -318,6 +330,79 @@
             document.getElementById("music").src = "https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk";
           }
         });
+
+        const checkbox2 = document.querySelector('input[name="switch2"]');
+        checkbox2.addEventListener('change', function() {
+          if (this.checked) {
+              document.addEventListener("keypress", logKey);;
+          } else {
+              document.removeEventListener("keypress", logKey);;
+          }
+        });
+
+        function themered() {
+          
+            document.getElementById("bg-video").src = "car1.mp4";
+            const element1 = document.querySelector('.search-box');
+            element1.style.border = "4px solid #DC052D";
+            element1.style.backgroundColor = "#DC052D";
+            const element2 = document.querySelector('.button');                              element2.style.backgroundColor = "#DC052D";
+            element2.style.border = "4px solid #DC052D";
+            const element3 = document.querySelector('.tab');
+            element3.style.backgroundColor = "#DC052D";               
+            const element4 = document.querySelector('.tab-content');
+            element4.style.backgroundColor = "#DC052D";
+            element4.style.border = "3px solid #DC052D";
+            const element5 = document.querySelector('.sliding-tab-right .tab-content');
+            element5.style.backgroundColor = "#DC052D";
+            element5.style.border = "3px solid #DC052D";
+            const element6 = document.querySelector('.sliding-tab-left .tab-content');
+            element6.style.backgroundColor = "#DC052D";
+            element6.style.border = "3px solid #DC052D";
+            document.getElementById("sear").style.backgroundColor = "#DC052D";
+            document.getElementById("sear").style.border = "3px solid #DC052D";
+            document.getElementById("lucky-button").style.backgroundColor = "#DC052D";
+            document.getElementById("lucky-button").style.border = "3px solid #DC052D";
+            document.getElementById("righttab").style.backgroundColor = "#DC052D";
+            document.getElementById("righttab").style.border = "3px solid #DC052D";
+            document.getElementById("lefttab").style.backgroundColor = "#DC052D";
+            document.getElementById("lefttab").style.border = "3px solid #DC052D";
+            
+    
+}
+
+function themeblack() {
+    document.getElementById("bg-video").src = "black1.mp4";
+    const element1 = document.querySelector('.search-box');
+    element1.style.border = "4px solid #a6a4a4";
+    element1.style.backgroundColor = "#a6a4a4";
+    const element2 = document.querySelector('.button');
+    element2.style.backgroundColor = "#a6a4a4";
+    element2.style.border = "4px solid #dbd9da";
+    const element3 = document.querySelector('.tab');
+    element3.style.backgroundColor = "#a6a4a4";
+    const element4 = document.querySelector('.tab-content');
+    element4.style.backgroundColor = "#a6a4a4";
+    element4.style.border = "3px solid #a6a4a4";
+    const element5 = document.querySelector('.sliding-tab-right .tab-content');
+    element5.style.backgroundColor = "#a6a4a4";
+    element5.style.border = "3px solid #a6a4a4";
+    const element6 = document.querySelector('.sliding-tab-left .tab-content');
+    element6.style.backgroundColor = "#a6a4a4";
+    element6.style.border = "3px solid #a6a4a4";
+    document.getElementById("sear").style.backgroundColor = "#a6a4a4";
+    document.getElementById("sear").style.border = "3px solid #a6a4a4";
+    document.getElementById("lucky-button").style.backgroundColor = "#a6a4a4";
+    document.getElementById("lucky-button").style.border = "3px solid #a6a4a4";
+    document.getElementById("righttab").style.backgroundColor = "#a6a4a4";
+    document.getElementById("righttab").style.border = "3px solid #a6a4a4";
+    document.getElementById("lefttab").style.backgroundColor = "#a6a4a4";
+    document.getElementById("lefttab").style.border = "3px solid #a6a4a4";
+    
+    
+}
+        
+        
         
     </script>
 </body>
