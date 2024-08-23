@@ -50,14 +50,6 @@ checkbox.addEventListener('change', function () {
         document.getElementById("music").src = "https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk";
     }
 });
-const checkbox2 = document.querySelector('input[name="switch2"]');
-checkbox2.addEventListener('change', function () {
-    if (this.checked) {
-        document.addEventListener("keypress", logKey);;
-    } else {
-        document.removeEventListener("keypress", logKey);;
-    }
-});
 
 function themered() {
     document.getElementById("bg-video").src = "car1.mp4";
