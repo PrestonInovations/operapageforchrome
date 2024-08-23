@@ -9,26 +9,26 @@ var audio1 = new Audio('keyboard1.wav');
 var audio2 = new Audio('keyboard2.wav');
 var audio3 = new Audio('keyboard3.wav');
 var audio4 = new Audio('keyboard4.wav');
-audio1.volume = 1;
-audio2.volume = 1;
-audio3.volume = 1;
-audio4.volume = 1;
-document.addEventListener("keypress", logKey);
-function logKey() {
-    var num = Math.floor(Math.random() * 4);
-    if (num = 0) {
-        audio1.play();
-    }
-    if (num = 1) {
-        audio2.play();
-    }
-    if (num = 2) {
-        audio3.play();
-    }
-    if (num = 3) {
-        audio4.play();
-    }
-}
+//audio1.volume = 1;
+//audio2.volume = 1;
+//audio3.volume = 1;
+//audio4.volume = 1;
+//document.addEventListener("keypress", logKey);
+//function logKey() {
+   // var num = Math.floor(Math.random() * 4);
+  //  if (num = 0) {
+  //      audio1.play();
+   ////// }
+   // if (num = 1) {
+  //      audio2.play();
+  //  }
+  //  if (num = 2) {
+  //      audio3.play();
+ //   }
+ //   if (num = 3) {
+//        audio4.play();
+//    }
+//}
 document.getElementById('search-form').addEventListener('submit', function (e) {
     var query = document.querySelector('input[name="q"]').value;
     if (!query.trim()) {
