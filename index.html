@@ -1,77 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HomePage 2 </title>
     <style>
-        body, html {
+        body,
+        html {
             height: 100%;
             margin: 0;
             overflow: hidden;
             font-family: Arial, sans-serif;
         }
+
         .switch {
-          position: relative;
-          display: inline-block;
-          width: 60px;
-          height: 34px;
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
         }
 
         /* Hide default HTML checkbox */
         .switch input {
-          opacity: 0;
-          width: 0;
-          height: 0;
+            opacity: 0;
+            width: 0;
+            height: 0;
         }
 
         /* The slider */
         .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: #ccc;
-          -webkit-transition: .4s;
-          transition: .4s;
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
         }
 
         .slider:before {
-          position: absolute;
-          content: "";
-          height: 26px;
-          width: 26px;
-          left: 4px;
-          bottom: 4px;
-          background-color: white;
-          -webkit-transition: .4s;
-          transition: .4s;
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
         }
 
-        input:checked + .slider {
-          background-color: #2196F3;
+        input:checked+.slider {
+            background-color: #2196F3;
         }
 
-        input:focus + .slider {
-          box-shadow: 0 0 1px #2196F3;
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
         }
 
-        input:checked + .slider:before {
-          -webkit-transform: translateX(26px);
-          -ms-transform: translateX(26px);
-          transform: translateX(26px);
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
         }
 
         /* Rounded sliders */
         .slider.round {
-          border-radius: 34px;
+            border-radius: 34px;
         }
 
         .slider.round:before {
-          border-radius: 50%;
+            border-radius: 50%;
         }
+
         #bg-video {
             position: fixed;
             right: 0;
@@ -83,6 +87,7 @@
             z-index: -1000;
             background-size: cover;
         }
+
         .content {
             position: relative;
             height: 100vh;
@@ -91,14 +96,17 @@
             align-items: center;
             justify-content: center;
         }
+
         .logo {
             margin-bottom: 20px;
         }
+
         .search-container {
             width: 580px;
             margin-bottom: 20px;
-            
+
         }
+
         .search-box {
             width: 100%;
             padding: 10px;
@@ -110,11 +118,13 @@
             opacity: 0.7;
 
         }
+
         .buttons {
             display: flex;
             justify-content: center;
             opacity: 0.7;
         }
+
         .button {
             margin: 0 4px;
             padding: 10px 16px;
@@ -125,9 +135,10 @@
             color: #000000;
             cursor: pointer;
         }
+
         .button:hover {
             border-color: #dadce0;
-            box-shadow: 0 1px 1px rgba(0,0,0,.1);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
         }
 
         /* Sliding Tab Styles */
@@ -140,6 +151,7 @@
             transition: top 0.3s ease-out;
             z-index: 1000;
         }
+
         .tab {
             background-color: #DC052D;
             color: white;
@@ -150,6 +162,7 @@
             border-bottom-right-radius: 20px;
             color: #000000;
         }
+
         .tab-content {
             background-color: #DC052D;
             padding: 20px;
@@ -157,6 +170,7 @@
             border: 3px solid #DC052D;
             color: #000000;
         }
+
         .sliding-tab.open {
             top: 0;
         }
@@ -171,12 +185,15 @@
             z-index: 1000;
             opacity: 0.7;
         }
+
         .sliding-tab-right .tab-content {
             height: 750px;
         }
+
         .sliding-tab-right.open {
             top: 0;
         }
+
         .sliding-tab-left {
             width: 300px;
             position: fixed;
@@ -186,12 +203,15 @@
             z-index: 1000;
             opacity: 0.7;
         }
+
         .sliding-tab-left .tab-content {
             height: 750px;
         }
+
         .sliding-tab-left.open {
             top: 0px;
         }
+
         #draggable-div {
             position: fixed;
             bottom: -300px;
@@ -211,6 +231,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            opacity: 0.7;
         }
 
         #drag-handle::before {
@@ -228,6 +249,7 @@
         }
     </style>
 </head>
+
 <body>
     <video autoplay muted loop id="bg-video">
         <source src="car1.mp4" type="video/mp4">
@@ -236,7 +258,8 @@
 
     <div class="sliding-tab">
         <div class="tab-content">
-            <iframe src="https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk" width="550" height="240" frameborder="0" id="music" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe src="https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk" width="550" height="240"
+                frameborder="0" id="music" allowtransparency="true" allow="encrypted-media"></iframe>
         </div>
         <div class="tab">............................................</div>
     </div>
@@ -258,8 +281,8 @@
 
             <img src="youtube.png" onclick="window.open('https://youtube.com');" </img>
 
-             <h3>Favorite Applications</h3>
-    
+            <h3>Favorite Applications</h3>
+
         </div>
         <div id="righttab" class="tab">............................................</div>
     </div>
@@ -269,27 +292,27 @@
             <h3>Settings</h3>
             <h4>Youtube Music Mode</h4>
             <label class="switch">
-                <input name="switch1" id="swit"  type="checkbox" onchange="//update()" >
+                <input name="switch1" id="swit" type="checkbox" onchange="//update()">
                 <span class="slider round"></span>
-              </label>
+            </label>
             <h4>Keyboard Sounds</h4>
             <label class="switch">
-                <input name="switch2" id="swit"  type="checkbox" onchange="//update()" >
+                <input name="switch2" id="swit" type="checkbox" onchange="//update()">
                 <span class="slider round"></span>
-              </label>
+            </label>
             <h4>presets</h4>
             <button type="submit" onclick="themered()" class="button">Red</button>
 
             <button type="submit" onclick="themeblack()" class="button">white</button>
-            
-        
+
+
 
         </div>
         <div id="lefttab" class="tab">............................................</div>
     </div>
-   
+
     <div class="content">
-        
+
         <form id="search-form" action="https://www.google.com/search" method="get">
             <div class="search-container">
                 <input type="text" name="q" class="search-box" placeholder="Search the web">
@@ -297,7 +320,7 @@
             <div class="buttons">
                 <button type="submit" id="sear" class="button">Google Search</button>
                 <button type="button" id="lucky-button" class="button">I'm Feeling Lucky</button>
-               
+
             </div>
         </form>
     </div>
@@ -305,7 +328,9 @@
         <div id="drag-handle"></div>
         <div id="content">
 
-            <iframe src="https://drive.google.com/embeddedfolderview?id=0B9sEQc9fWSoOfmswcExOTGN5dW1pVFh3NmdJQV91MGsxTlRVRkZ4Qk9FcjJ5djg4SkdPeDQ" style="width:100%; height:300px; border:0;"></iframe>
+            <iframe
+                src="https://drive.google.com/embeddedfolderview?id=0B9sEQc9fWSoOfmswcExOTGN5dW1pVFh3NmdJQV91MGsxTlRVRkZ4Qk9FcjJ5djg4SkdPeDQ"
+                style="width:100%; height:300px; border:0;"></iframe>
 
             <!-- Add more content as needed -->
         </div>
@@ -320,36 +345,36 @@
         audio2.volume = 1;
         audio3.volume = 1;
         audio4.volume = 1;
-        
-        
+
+
 
         document.addEventListener("keypress", logKey);
 
-        
-        
+
+
         function logKey() {
             var num = Math.floor(Math.random() * 4);
-            if(num=0){
+            if (num = 0) {
                 audio1.play();
             }
-            if(num=1){
+            if (num = 1) {
                 audio2.play();
             }
-            if(num=2){
+            if (num = 2) {
                 audio3.play();
             }
-            if(num=3){
+            if (num = 3) {
                 audio4.play();
             }
         }
-        document.getElementById('search-form').addEventListener('submit', function(e) {
+        document.getElementById('search-form').addEventListener('submit', function (e) {
             var query = document.querySelector('input[name="q"]').value;
             if (!query.trim()) {
                 e.preventDefault(); // Prevent empty searches
             }
         });
 
-        document.getElementById('lucky-button').addEventListener('click', function() {
+        document.getElementById('lucky-button').addEventListener('click', function () {
             var query = document.querySelector('input[name="q"]').value;
             if (query.trim()) {
                 window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(query) + '&btnI';
@@ -366,33 +391,33 @@
         });
 
         const checkbox = document.querySelector('input[name="switch1"]');
-        checkbox.addEventListener('change', function() {
-          if (this.checked) {
-            document.getElementById("music").src = " https://www.youtube.com/embed/videoseries?list=PLMr7aAMAt4PgUxsfItBMPNiRQVTO-r9-m&index=3";
-          } else {
-            document.getElementById("music").src = "https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk";
-          }
+        checkbox.addEventListener('change', function () {
+            if (this.checked) {
+                document.getElementById("music").src = " https://www.youtube.com/embed/videoseries?list=PLMr7aAMAt4PgUxsfItBMPNiRQVTO-r9-m&index=3";
+            } else {
+                document.getElementById("music").src = "https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk";
+            }
         });
 
         const checkbox2 = document.querySelector('input[name="switch2"]');
-        checkbox2.addEventListener('change', function() {
-          if (this.checked) {
-              document.addEventListener("keypress", logKey);;
-          } else {
-              document.removeEventListener("keypress", logKey);;
-          }
+        checkbox2.addEventListener('change', function () {
+            if (this.checked) {
+                document.addEventListener("keypress", logKey);;
+            } else {
+                document.removeEventListener("keypress", logKey);;
+            }
         });
 
         function themered() {
-          
+
             document.getElementById("bg-video").src = "car1.mp4";
             const element1 = document.querySelector('.search-box');
             element1.style.border = "4px solid #DC052D";
             element1.style.backgroundColor = "#DC052D";
-            const element2 = document.querySelector('.button');                              element2.style.backgroundColor = "#DC052D";
+            const element2 = document.querySelector('.button'); element2.style.backgroundColor = "#DC052D";
             element2.style.border = "4px solid #DC052D";
             const element3 = document.querySelector('.tab');
-            element3.style.backgroundColor = "#DC052D";               
+            element3.style.backgroundColor = "#DC052D";
             const element4 = document.querySelector('.tab-content');
             element4.style.backgroundColor = "#DC052D";
             element4.style.border = "3px solid #DC052D";
@@ -410,40 +435,40 @@
             document.getElementById("righttab").style.border = "3px solid #DC052D";
             document.getElementById("lefttab").style.backgroundColor = "#DC052D";
             document.getElementById("lefttab").style.border = "3px solid #DC052D";
-            
-    
-}
 
-function themeblack() {
-    document.getElementById("bg-video").src = "black1.mp4";
-    const element1 = document.querySelector('.search-box');
-    element1.style.border = "4px solid #a6a4a4";
-    element1.style.backgroundColor = "#a6a4a4";
-    const element2 = document.querySelector('.button');
-    element2.style.backgroundColor = "#a6a4a4";
-    element2.style.border = "4px solid #dbd9da";
-    const element3 = document.querySelector('.tab');
-    element3.style.backgroundColor = "#a6a4a4";
-    const element4 = document.querySelector('.tab-content');
-    element4.style.backgroundColor = "#a6a4a4";
-    element4.style.border = "3px solid #a6a4a4";
-    const element5 = document.querySelector('.sliding-tab-right .tab-content');
-    element5.style.backgroundColor = "#a6a4a4";
-    element5.style.border = "3px solid #a6a4a4";
-    const element6 = document.querySelector('.sliding-tab-left .tab-content');
-    element6.style.backgroundColor = "#a6a4a4";
-    element6.style.border = "3px solid #a6a4a4";
-    document.getElementById("sear").style.backgroundColor = "#a6a4a4";
-    document.getElementById("sear").style.border = "3px solid #a6a4a4";
-    document.getElementById("lucky-button").style.backgroundColor = "#a6a4a4";
-    document.getElementById("lucky-button").style.border = "3px solid #a6a4a4";
-    document.getElementById("righttab").style.backgroundColor = "#a6a4a4";
-    document.getElementById("righttab").style.border = "3px solid #a6a4a4";
-    document.getElementById("lefttab").style.backgroundColor = "#a6a4a4";
-    document.getElementById("lefttab").style.border = "3px solid #a6a4a4";
-    
-    
-}
+
+        }
+
+        function themeblack() {
+            document.getElementById("bg-video").src = "black1.mp4";
+            const element1 = document.querySelector('.search-box');
+            element1.style.border = "4px solid #a6a4a4";
+            element1.style.backgroundColor = "#a6a4a4";
+            const element2 = document.querySelector('.button');
+            element2.style.backgroundColor = "#a6a4a4";
+            element2.style.border = "4px solid #dbd9da";
+            const element3 = document.querySelector('.tab');
+            element3.style.backgroundColor = "#a6a4a4";
+            const element4 = document.querySelector('.tab-content');
+            element4.style.backgroundColor = "#a6a4a4";
+            element4.style.border = "3px solid #a6a4a4";
+            const element5 = document.querySelector('.sliding-tab-right .tab-content');
+            element5.style.backgroundColor = "#a6a4a4";
+            element5.style.border = "3px solid #a6a4a4";
+            const element6 = document.querySelector('.sliding-tab-left .tab-content');
+            element6.style.backgroundColor = "#a6a4a4";
+            element6.style.border = "3px solid #a6a4a4";
+            document.getElementById("sear").style.backgroundColor = "#a6a4a4";
+            document.getElementById("sear").style.border = "3px solid #a6a4a4";
+            document.getElementById("lucky-button").style.backgroundColor = "#a6a4a4";
+            document.getElementById("lucky-button").style.border = "3px solid #a6a4a4";
+            document.getElementById("righttab").style.backgroundColor = "#a6a4a4";
+            document.getElementById("righttab").style.border = "3px solid #a6a4a4";
+            document.getElementById("lefttab").style.backgroundColor = "#a6a4a4";
+            document.getElementById("lefttab").style.border = "3px solid #a6a4a4";
+
+
+        }
         const draggableDiv = document.getElementById('draggable-div');
         const dragHandle = document.getElementById('drag-handle');
         let isDragging = false;
@@ -480,8 +505,9 @@ function themeblack() {
         function stopDragging() {
             isDragging = false;
         }
-        
-        
+
+
     </script>
 </body>
+
 </html>
