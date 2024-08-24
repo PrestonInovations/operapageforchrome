@@ -4,6 +4,9 @@ element8.style.border = "3px solid #a6a4a4";
 document.getElementById("centretab").style.backgroundColor = "#a6a4a4";
 document.getElementById("centretab").style.border = "3px solid #a6a4a4";
 
+const panel2 = document.getElementById('panel2');
+let isPanel2Open = false;
+
 
 var audio1 = new Audio('keyboard1.wav');
 var audio2 = new Audio('keyboard2.wav');
@@ -63,6 +66,15 @@ checkbox.addEventListener('change', function () {
         document.getElementById("music").src = " https://www.youtube.com/embed/videoseries?list=PLMr7aAMAt4PgUxsfItBMPNiRQVTO-r9-m&index=3";
     } else {
         document.getElementById("music").src = "https://open.spotify.com/embed/track/35nsl8YiBIYw1YdNmkmhnk";
+    }
+});
+
+const checkbox2 = document.querySelector('input[name="switch2"]');
+checkbox2.addEventListener('change', function () {
+    if (this.checked) {
+        panel2.classList.add('open');
+    } else {
+        panel2.classList.remove('open');
     }
 });
 
@@ -214,6 +226,7 @@ function createNewScript(code) {
 
 const panel = document.getElementById('panel');
 let isPanelOpen = false;
+
 
 document.addEventListener('keydown', function(event) {
     if (event.key.toLowerCase() === 'n') {

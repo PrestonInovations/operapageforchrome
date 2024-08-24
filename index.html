@@ -149,7 +149,7 @@
             left: 50%;
             transform: translateX(-50%);
             transition: top 0.3s ease-out;
-            z-index: 1000;
+            z-index: 9998;
         }
 
         .tab {
@@ -186,7 +186,7 @@
             top: -800px;
             right: 20px;
             transition: top 0.3s ease-out;
-            z-index: 1000;
+            z-index: 9998;
         }
 
         .sliding-tab-right .tab-content {
@@ -348,6 +348,21 @@
         #panel.open {
             left: 0;
         }
+        #panel2 {
+            position: fixed;
+            right: -1790px;
+            top: 0;
+            width: 1790px;
+            height: 100%;
+            background-color: #000000;
+            transition: left 0.3s ease-in-out;
+            padding: 20px;
+            box-sizing: border-box;
+             z-index: 9998;
+        }
+        #panel2.open {
+            right: 0;
+        }
     </style>
 </head>
 
@@ -361,12 +376,18 @@
             
             </iframe>
     </div>
+    <div id="panel2">
+        <iframe id="frame" src="https://docs.google.com/document/d/1u13hJxZXi-8KHuZg8Ygo-3x6zHvHvapnwqyU8Ape55k/edit?embedded=true" width="95%" height="90%" frameborder="0" style="position: fixed; top: 5%;">
+
+            </iframe>
+    </div>
+    
     <div id="customm" class="custom">
         
     </div>
     <div class="calendar"> <div class="month" id="currentMonth"></div> <div class="weekdays"> <div>S</div> <div>M</div> <div>T</div> <div>W</div> <div>T</div> <div>F</div> <div>S</div> </div> <div class="days" id="calendarDays"></div> </div>
 
-    <iframe src="https://docs.google.com/document/d/16buIYYqp8bJSfjOE2eR43g_smJmbedKonfYqlluCHZQ/edit?embedded=true" width="300px" class="doc" id="assignments" height="730px" frameborder="0" style="z-index: 9997;"></iframe>
+    <iframe src="https://docs.google.com/document/d/16buIYYqp8bJSfjOE2eR43g_smJmbedKonfYqlluCHZQ/edit?embedded=true" width="300px" class="doc" id="assignments" height="85%" frameborder="0" style="z-index: 9997;"></iframe>
     
     <div class="sliding-tab">
         <div class="tab-content">
@@ -434,6 +455,12 @@
             <h4>dragable window url</h4>
             <P>Url for the dragable window.Must be an embered url</P>
             <input type="text" id="textin" value="https://drive.google.com/embeddedfolderview?id=0B9sEQc9fWSoOfmswcExOTGN5dW1pVFh3NmdJQV91MGsxTlRVRkZ4Qk9FcjJ5djg4SkdPeDQ" oninput="changeurl(this.value)">
+            <h4>Note Mode</h4>
+            <P>switches to note mode</P>
+            <label class="switch">
+                <input name="switch2" id="switt" type="checkbox" onchange="//update()">
+                <span class="slider round"></span>
+            </label>
             
         </div>
         <div id="lefttab" class="tab">............................................</div>
