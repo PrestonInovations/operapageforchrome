@@ -421,16 +421,20 @@
         <div class="tab-content">
             <h3>Settings</h3>
             <h4>Youtube Music Mode</h4>
+            <P>Switches music from a set spotify playlist to a youtube playlist</P>
             <label class="switch">
                 <input name="switch1" id="swit" type="checkbox" onchange="//update()">
                 <span class="slider round"></span>
             </label>
             <h4>presets</h4>
+            <P>Changes colors and images of page</P>
             <button type="submit" onclick="themered()" class="button">Red</button>
             <button type="submit" onclick="themeblack()" class="button">white</button>
             <h4>assignemnts doc opacity</h4>
+            <P>adjust visibility of the assignments document</P>
             <input type="range" min="0" max="10" value="10" oninput="handleSliderChange(this.value)">
             <h4>dragable window url</h4>
+            <P>Url for the dragable window.Must be an embered url</P>
             <input type="text" id="textin" value="https://drive.google.com/embeddedfolderview?id=0B9sEQc9fWSoOfmswcExOTGN5dW1pVFh3NmdJQV91MGsxTlRVRkZ4Qk9FcjJ5djg4SkdPeDQ" oninput="changeurl(this.value)">
             
         </div>
